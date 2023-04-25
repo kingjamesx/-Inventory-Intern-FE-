@@ -1,5 +1,5 @@
 <template>
-  <q-input outlined class="q-mb-md" v-model="messages" />
+  <q-input filled class="q-mb-md" v-model="messages" />
 </template>
 
 <script>

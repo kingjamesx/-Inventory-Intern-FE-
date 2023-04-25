@@ -1,9 +1,8 @@
 <template>
   <q-select
-    outlined
-    v-model="model"
+    filled
+    v-model="selectMessages"
     :options="options"
-    label="select product category"
     class="q-mb-md"
   />
 </template>
@@ -14,11 +13,15 @@ import { ref } from "vue";
 
 export default defineComponent({
   name: "SelectInput",
+  props: ["selectMessage"],
 
-  setup() {
+  setup(props) {
+    const selectMessages = ref(props.selectMessage);
+
     return {
       model: ref(null),
       options: ["Google", "Facebook", "Twitter", "Apple", "Oracle"],
+      selectMessages,
     };
   },
 });
