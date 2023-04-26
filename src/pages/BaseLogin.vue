@@ -11,21 +11,36 @@
         <main class="main">
          <p style="font-size: 24px; font-weight: 500;" class="m-text">Welcome back</p>
          <p class="m-text">Welcome back! Please enter your details.</p>
+         <q-form @submit.prevent="submitForm">
          <div class="q-mb-lg">
-                <q-label class="label">Email</q-label>
-                <q-input outlined v-model="ph" placeholder="Enter your email"  :dense="dense" />
-
+                <label class="label">Email</label>
+                <q-input outlined v-model="loginData.email" placeholder="Enter your email"   
+                :rules="[
+                (val) => !!val || 'Field is required',
+                (val) =>
+                  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(val) ||
+                  'Please enter a Valid email address',
+              ]"
+                />
+              
          </div>
          <div>
-                <q-label class="label">Password</q-label>
-                <q-input outlined v-model="ph" placeholder="********"  :dense="dense" />
+                <label class="label">Password</label>
+                <q-input outlined v-model="loginData.password" placeholder="********"  
+                :rules="[
+                (val) => !!val || 'Field is required',
+                (val) => val.length > 7 || 'minimum of 8 characters',
+              ]"
+                />
               </div>
               <div class="flex justify-between q-mt-md">
                 <q-checkbox v-model="right" label="Remember for 30 days" />
                 <q-btn flat color="primary" label="Forgot password" to="/"/>
               </div>
-              <q-btn  label="Sign in" class="full-width login-btn" />
-              <q-btn outline  color="white" class="full-width q-mt-md text-grey-10 btn-border google-btn">
+              <q-btn  label="Sign in" class="full-width login-btn" type="submit" />
+              
+        </q-form>
+        <q-btn outline  color="white" class="full-width q-mt-md text-grey-10 btn-border google-btn">
                <q-icon>
                 <img left src="../assets/google.png" alt="google">
                </q-icon>
@@ -42,7 +57,7 @@
         </main>
     </section>
 
-    <section class="bg-grey-10 right ">
+    <section class=" right bg">
         <div class="circle">
            <span class="login-img"><img src="../assets/ourpass-login.png" alt=""></span> 
         </div>
@@ -53,8 +68,17 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref,reactive } from 'vue'
 let right=ref(false)
+const loginData=reactive(
+    {        
+    "email": "",
+    "password": ""
+    }
+)
+const submitForm=()=>{
+    console.log({...loginData})
+}
 </script>
 
 <style lang="scss" scoped>
@@ -80,6 +104,9 @@ let right=ref(false)
         display: none;
     }
 }
+.bg{
+    background-color: #f3f5f9;
+}
 .label{
     display: block;
     margin-bottom: 5px;
@@ -93,7 +120,7 @@ let right=ref(false)
   
 }
 .circle{
-    background-color: purple;
+    background-color:#633fb8;
     width: 200px;
     height: 200px;
     border-radius: 50%;
@@ -114,7 +141,7 @@ let right=ref(false)
   
 }
 .login-btn{
-    background-color: purple;
+    background-color: #7e56da;
     color: white;
     border-radius: 8px;
     padding: 10px;
