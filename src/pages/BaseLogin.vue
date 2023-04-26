@@ -50,7 +50,7 @@
            
          
              <a>Don't have an account?</a>
-              <a href="">Sign up</a>
+              <a href="/signup" flat>Sign up</a>
     
             </div>
 
