@@ -1,15 +1,15 @@
 <template>
   <div class="container">
-    <section class="left">
+    <section class="left bg">
       <div class="circle">
         <span class="login-img"
           ><img src="../assets/ourpass-login.png" alt=""
         /></span>
       </div>
     </section>
-    <section class="right">
+    <section class="right ">
       <p style="font-size: 18px; font-weight: 500" class="top-text">Ourpass</p>
-      <section class="left top-logo">
+      <section class="left top-logo ">
         <div class="circle">
           <span class="login-img"
             ><img src="../assets/ourpass-login.png" alt=""
@@ -155,7 +155,6 @@ const submitForm = () => {
   }
 }
 .left {
-  background-color: #f3f5f9;
   flex-basis: 50%;
   display: flex;
   justify-content: center;
@@ -164,6 +163,10 @@ const submitForm = () => {
   @media (max-width: 1100px) {
     display: none;
   }
+}
+.bg{
+    background-color: #f3f5f9;
+
 }
 .label {
   display: block;
