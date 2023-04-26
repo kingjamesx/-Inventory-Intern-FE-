@@ -1,13 +1,9 @@
 <template>
-    <div>
-          <h1>Welcome to Inventory</h1>
-    </div>
+  <div>
+    <h1>Welcome to Inventory</h1>
+  </div>
 </template>
 
-<script setup>
+<script></script>
 
-</script>
-
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
