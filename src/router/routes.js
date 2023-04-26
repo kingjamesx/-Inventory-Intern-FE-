@@ -4,10 +4,14 @@ const routes = [
     component: () => import("layouts/MainLayout.vue"),
     children: [
       { path: "", component: () => import("pages/IndexPage.vue") },
-      { path: "/inventory", component: () => import("pages/BaseInventory.vue") },
-      { path: "/createinventory", component: () => import("pages/createInventory.vue") }
-
-
+      {
+        path: "/inventory",
+        component: () => import("pages/BaseInventory.vue"),
+      },
+      {
+        path: "/createinventory",
+        component: () => import("pages/CreateInventory.vue"),
+      },
     ],
   },
   {
