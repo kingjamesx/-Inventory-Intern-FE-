@@ -1,4 +1,4 @@
-<template class="flex justify-center centers">
+<template>
   <div class="container">
     <div class="top-bar">
       <p class="text-weight-bold q-my-md">InventoryList</p>
@@ -15,7 +15,7 @@
           v-model="ph"
           placeholder="Find Something"
           :dense="dense"
-          class="input"
+          class="select-input"
         >
           <template v-slot:prepend>
             <q-icon name="search" />
@@ -188,38 +188,33 @@ export default {
 <style lang="scss" scoped>
 .container {
   background-color: #e5e5e5;
-  //   margin: 41px 191px 0px 191px;
-  //   width: 100%;
 }
 
 .top-bar {
   display: flex;
-  //   width: 100%;
-  margin: 0 32px;
+  margin: 0px 32px;
   justify-content: space-between;
 }
 
 .search {
-  //   width: 409px;
   display: flex;
-  padding: 10px;
 }
 
 .select-input {
-  width: 200px;
+  width: 160px;
   margin-right: 10px;
+  margin-top: 10px;
 }
 
 @media (max-width: 768px) {
-  
   .top-bar {
     margin: 0px 15px;
+    display: block;
+    margin-top: -11px;
   }
   .select-input {
-    // width: 180px;
-  }
-  .search {
-    width: 180px;
+    width: 100%;
+    margin-right: 5px;
   }
 }
 </style>
