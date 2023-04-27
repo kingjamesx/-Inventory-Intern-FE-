@@ -7,9 +7,9 @@
         /></span>
       </div>
     </section>
-    <section class="right ">
+    <section class="right">
       <p style="font-size: 18px; font-weight: 500" class="top-text">Ourpass</p>
-      <section class="left top-logo ">
+      <section class="left top-logo">
         <div class="circle">
           <span class="login-img"
             ><img src="../assets/ourpass-login.png" alt=""
@@ -21,12 +21,12 @@
           Create an account
         </p>
         <p class="m-text">Sign into your account to get started</p>
-        <q-form @submit.prevent="submitForm">
+        <q-form @submit="submitForm">
           <div class="q-mb-lg">
             <label class="label">Fullname</label>
             <q-input
               outlined
-              v-model="formData.name"
+              v-model="form.name"
               placeholder="Enter your Fullname"
               type="text"
               :rules="[
@@ -39,7 +39,7 @@
             <label class="label">Business Name</label>
             <q-input
               outlined
-              v-model="formData.businessName"
+              v-model="form.businessName"
               placeholder="Enter business name"
               :rules="[(val) => !!val || 'Field is required']"
             />
@@ -48,7 +48,7 @@
             <label class="label">Email Address</label>
             <q-input
               outlined
-              v-model="formData.email"
+              v-model="form.email"
               placeholder="Enter Email Address"
               :rules="[
                 (val) => !!val || 'Field is required',
@@ -62,7 +62,7 @@
             <label class="label">Phone Number</label>
             <q-input
               outlined
-              v-model="formData.phoneNumber"
+              v-model="form.phoneNumber"
               placeholder="phone number"
               mask="###########"
             />
@@ -71,7 +71,7 @@
             <label class="label">Password</label>
             <q-input
               outlined
-              v-model="formData.password"
+              v-model="form.password"
               placeholder="**********"
               :type="isPwd ? 'password' : 'text'"
               :rules="[
@@ -92,12 +92,12 @@
             <label class="label">Confirm Password</label>
             <q-input
               outlined
-              v-model="formData.confirmPassword"
+              v-model="form.confirmPassword"
               placeholder="**********"
               :type="isPwdConfirmed ? 'password' : 'text'"
               :rules="[
                 (val) => !!val || 'Field is required',
-                (val) => val == formData.password || 'Password is not matched',
+                (val) => val == form.password || 'Password is not matched',
               ]"
             >
               <template v-slot:append>
@@ -124,20 +124,37 @@
   </div>
 </template>
 
-<script setup>
-import { ref, reactive } from "vue";
-const isPwd = ref(true);
-const isPwdConfirmed = ref(true);
-const formData = reactive({
-  name: "",
-  businessName: "",
-  email: "",
-  phoneNumber: "",
-  password: "",
-  confirmPassword: "",
-});
-const submitForm = () => {
-  console.log({ ...formData });
+<script>
+import { useRouter } from 'vue-router';
+export default {
+  data() {
+    return {
+      form: {
+        name: "",
+        businessName: "",
+        email: "",
+        phoneNumber: "",
+        password: "",
+        confirmPassword: "",
+      },
+      router:useRouter()
+
+    };
+  },
+  methods: {
+    submitForm() {
+      this.$api.post('auth/register',this.form)
+        .then(res=>{
+            console.log(res)
+        this.$store.dispatch('auth/login',res.data)
+        this.router.push({ path: '/dashboard' })
+
+        })
+        .catch(err=>{
+            console.log(err.message)
+        })
+    },
+  },
 };
 </script>
 
@@ -164,9 +181,8 @@ const submitForm = () => {
     display: none;
   }
 }
-.bg{
-    background-color: #f3f5f9;
-
+.bg {
+  background-color: #f3f5f9;
 }
 .label {
   display: block;
@@ -254,7 +270,6 @@ const submitForm = () => {
   bottom: 0;
   z-index: 10;
   /* backdrop-filter: blur(16px); */
-
   filter: blur(8px);
   -webkit-filter: blur(8px);
   border: 1px solid red;
