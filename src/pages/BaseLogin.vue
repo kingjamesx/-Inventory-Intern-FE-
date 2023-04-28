@@ -1,13 +1,15 @@
 <template>
   <div class="container">
     <section class="left">
-      <p style="font-size: 18px; font-weight: 500" class="top-text">Ourpass</p>
+      <!-- <p style="font-size: 18px; font-weight: 500" class="top-text">Ourpass</p> -->
+       <q-img src="../assets/inventory-logo.png" alt="company-logo" style="width:100px"/>
       <section class="right top-logo">
-        <div class="circle">
+        <!-- <div class="circle">
           <span class="login-img"
             ><img src="../assets/ourpass-login.png" alt=""
           /></span>
-        </div>
+        </div> -->
+        
       </section>
       <main class="main">
         <p style="font-size: 24px; font-weight: 500" class="m-text">
@@ -42,10 +44,11 @@
             />
           </div>
           <div class="flex justify-between q-mt-md">
-            <q-checkbox v-model="right" label="Remember for 30 days" />
-            <q-btn flat color="primary" label="Forgot password" to="/" />
+            <q-checkbox v-model="right" label="Remember for 30 days" color="black" />
+            <q-btn flat color="black" label="Forgot password" to="/" style="font-size: 12px;text-transform: capitalize;"/>
           </div>
-          <q-btn label="Sign in" class="full-width login-btn" type="submit" />
+          <q-btn :loading="loading" label="Sign in" class="full-width login-btn" type="submit" style="box-shadow: none;" />
+           
         </q-form>
         <q-btn
           outline
@@ -59,23 +62,48 @@
         </q-btn>
         <div class="main-footer">
           <a>Don't have an account?</a>
-          <a href="/signup" flat>Sign up</a>
+          <a href="/signup" flat style="text-decoration: none;color: #58b4b2;">Sign up</a>
         </div>
       </main>
     </section>
 
-    <section class="right bg">
-      <div class="circle">
+    <section class="right bg flex ">
+      <!-- <div class="circle">
         <span class="login-img"
           ><img src="../assets/ourpass-login.png" alt=""
         /></span>
-      </div>
+      </div> -->
+      <div>
+           <p >Take your Inventory To The Next Level</p>
+           <p>manage stock levels, monitor sales trends,receive low stock alerts and enjoy simple tools that help you build and grow your business faster.</p>
+           <div class="list-items">
+           <span><q-icon  class="fa-solid fa-chevron-right" style="color:red"  /></span>   
+            <p > Keep track of all your inventory in one place</p>
+           
+          </div>
+          <div class="list-items">
+           <span><q-icon  class="fa-solid fa-chevron-right" style="color:red"  /></span>   
+            <p > Access inventory information from anywhere, at any time</p>
+           
+          </div>
+          <div class="list-items">
+           <span><q-icon  class="fa-solid fa-chevron-right" style="color:red"  /></span>   
+            <p > Reduce manual data entry and errors</p>
+           
+          </div>
+          <div class="list-items">
+           <span><q-icon  class="fa-solid fa-chevron-right" style="color:red"  /></span>   
+            <p > Save time and money by optimizing your inventory management</p>
+           
+          </div>
+         </div>
       <!-- <q-image src="../assets/ourpass-login.png" style="height: 200px; width: 200px;"/> -->
     </section>
   </div>
 </template>
 
 <script >
+import { useQuasar } from 'quasar'
 import { useRouter } from 'vue-router';
  export default{
   data(){
@@ -84,15 +112,23 @@ import { useRouter } from 'vue-router';
               email:'',
               password:''
           },
-          router:useRouter()
+          right:true,
+          router:useRouter(),
+          loading:false,
+      $q : useQuasar()
+
+
       }
 
   },
   methods:{
 
+    spinner(){
+      
+    },
   
       submitForm(){
-      
+        this.loading=true
         this.$api.post('auth/login',this.form)
         .then(res=>{
             console.log(res)
@@ -101,11 +137,17 @@ import { useRouter } from 'vue-router';
             
         })
         .catch(err=>{
-            console.log(err.message)
-
+        this.loading = false
+      this.$q.notify({
+          type: 'negative',
+          message: err.message,
+          position:'top'
         })
-     
+        })
+          
       },
+  
+      
  
   },
   
@@ -136,7 +178,7 @@ import { useRouter } from 'vue-router';
   }
 }
 .bg {
-  background-color: #f3f5f9;
+  background-color: #e8f8f3;
 }
 .label {
   display: block;
@@ -150,7 +192,7 @@ import { useRouter } from 'vue-router';
   }
 }
 .circle {
-  background-color: #633fb8;
+  background-color: #1dbc86;
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -170,7 +212,8 @@ import { useRouter } from 'vue-router';
   }
 }
 .login-btn {
-  background-color: #7e56da;
+  /* background-color: #1dbc86; */
+  background-color: black;
   color: white;
   border-radius: 8px;
   padding: 10px;
@@ -214,6 +257,14 @@ import { useRouter } from 'vue-router';
 .m-text {
   @media (max-width: 1093px) {
     text-align: center;
+  }
+}
+.list-items{
+  display: flex;
+  align-items: center;
+
+  & p{
+    margin-top: 16px;
   }
 }
 </style>

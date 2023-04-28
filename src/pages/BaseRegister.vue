@@ -110,6 +110,7 @@
             </q-input>
           </div>
           <q-btn
+            :loading="loading"
             type="submit"
             label="Create Account"
             class="full-width login-btn"
@@ -125,6 +126,7 @@
 </template>
 
 <script>
+import { useQuasar } from 'quasar'
 import { useRouter } from 'vue-router';
 export default {
   data() {
@@ -137,21 +139,36 @@ export default {
         password: "",
         confirmPassword: "",
       },
-      router:useRouter()
+      isPwd:true,
+      isPwdConfirmed:true,
+      loading:false,
+      router:useRouter(),
+      $q : useQuasar()
+
 
     };
   },
   methods: {
     submitForm() {
+      this.loading=true
       this.$api.post('auth/register',this.form)
         .then(res=>{
-            console.log(res)
+          this.$q.notify({
+          type: 'positive',
+          message: res.message,
+          position:'top-right'
+        })
         this.$store.dispatch('auth/login',res.data)
         this.router.push({ path: '/dashboard' })
 
         })
         .catch(err=>{
-            console.log(err.message)
+          this.loading=false
+            this.$q.notify({
+          type: 'negative',
+          message: err.message,
+          position:'top-right'
+        })
         })
     },
   },
@@ -197,7 +214,7 @@ export default {
   }
 }
 .circle {
-  background-color: #6540bf;
+  background-color: #1dbc86;
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -217,7 +234,7 @@ export default {
   }
 }
 .login-btn {
-  background-color: #6540bf;
+  background-color: #1dbc86;
   color: white;
   border-radius: 8px;
   padding: 10px;
