@@ -1,23 +1,22 @@
 <template>
-  <q-page class="flex-center q-ma-lg">
-    <div class="flex" style="justify-content: space-between">
-      <h4 class="q-my-md">Inventory</h4>
-      <div>
-        <ActionButton />
-      </div>
-    </div>
-
+  <q-page class="creation_page">
+    <!-- <ActionButton /> -->
     <MainForm />
   </q-page>
 </template>
 
 <script>
+import MainForm from "../components/CreationFormComponents/MainForm.vue";
+// import ActionButton from "src/components/CreationFormComponents/ActionButton.vue";
 import { defineComponent } from "vue";
-import MainForm from "src/components/MainForm.vue";
-import ActionButton from "src/components/ActionButton.vue";
 
-export default defineComponent({
+export default {
   name: "createInventory",
-  components: { MainForm, ActionButton },
-});
+  components: { MainForm },
+};
 </script>
+<style scoped>
+.creation_page {
+  display: flex;
+}
+</style>

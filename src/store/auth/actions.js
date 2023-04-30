@@ -3,8 +3,7 @@ export function someAction (context) {
 }
 */
 
-import { api } from "src/boot/axios"
-
+import { api } from "src/boot/axios";
 
 // export function register ({ commit }, form) {
 //   return api.post('/auth/register', {...form})
@@ -13,16 +12,10 @@ import { api } from "src/boot/axios"
 //       commit('login', {token: response.data.access_token, user: response})
 //     })
 // }
-export  function login({commit},loginData){
-     
-   return  commit('login',{loginData})
-  
+export function login({ commit }, loginData) {
+  return commit("login", { loginData });
 }
 
-
-
-export async function logout({commit}){
-
- await commit('login',null)
- 
+export async function logout({ commit }) {
+  await commit("login", null);
 }

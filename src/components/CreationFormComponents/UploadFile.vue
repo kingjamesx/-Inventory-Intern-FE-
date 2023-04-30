@@ -1,6 +1,6 @@
 <template>
   <div class="q-pa-md">
-    <div class="q-gutter-y-md column" style="height: max-content">
+    <div class="q-gutter-y-md column">
       <q-file color="teal" filled v-model="model" label="Label">
         <template v-slot:append>
           <q-icon name="cloud_upload" />
@@ -12,12 +12,10 @@
 </template>
 
 <script>
-import { ref } from "vue";
-
 export default {
-  setup() {
+  data() {
     return {
-      model: ref(null),
+      model: null,
     };
   },
 };
