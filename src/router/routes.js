@@ -7,6 +7,11 @@ const routes = [
     path: "/signup",
     component: () => import("src/pages/BaseRegister.vue"),
   },
+  ,
+  {
+    path: "/forgot-password", 
+    component: () => import("src/pages/ForgetPassword.vue"),
+  },
   {
     path: "/dashboard",
     component: () => import("layouts/MainLayout.vue"),

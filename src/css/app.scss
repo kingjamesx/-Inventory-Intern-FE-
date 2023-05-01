@@ -1,7 +1,19 @@
 // app global css in SCSS form
-  @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&family=Work+Sans:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&display=swap');
 body{
     // font-family: 'Open Sans', sans-serif;
     // font-family: 'Lato', sans-serif;
     font-family: 'Work Sans', sans-serif;
+}
+.auth-footer{
+  text-align: center;
+  margin-top: 1.3rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.2rem;
+  color: #666;
+  & a{
+  color: #58b4b2;
+  text-decoration: none;     
+  }
 }
