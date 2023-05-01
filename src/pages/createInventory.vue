@@ -11,10 +11,10 @@ import MainForm from "../components/CreationFormComponents/MainForm.vue";
 import { defineComponent } from "vue";
 
 export default {
-  name: "CreateInventory",
+  name: "createInventory",
   components: { MainForm },
 };
-</script>
+</script> 
 <style scoped>
 .creation_page {
   display: flex;

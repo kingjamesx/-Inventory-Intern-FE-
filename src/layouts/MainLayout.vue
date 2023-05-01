@@ -20,7 +20,6 @@
           dark
           dense
           standout
-          v-model="text"
           input-class="text-left "
           class="q-mr-lg bg-blue-grey-11 text-black rounded-border search-input"
           placeholder="search"
