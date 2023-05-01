@@ -11,7 +11,7 @@ import MainForm from "../components/CreationFormComponents/MainForm.vue";
 import { defineComponent } from "vue";
 
 export default {
-  name: "createInventory",
+  name: "CreateInventory",
   components: { MainForm },
 };
 </script>

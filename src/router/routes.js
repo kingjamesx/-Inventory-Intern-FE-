@@ -18,7 +18,7 @@ const routes = [
       },
       {
         path: "/createinventory",
-        component: () => import("pages/createInventory.vue"),
+        component: () => import("pages/CreateInventory.vue"),
       },
     ],
   },
