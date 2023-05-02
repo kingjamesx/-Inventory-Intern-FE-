@@ -1,9 +1,11 @@
 <template>
-  <q-page class="flex flex-center">
-    <div>
-      <!-- <q-img :src="../assets/Dashboard.jpeg" alt="" /> -->
+  <q-page class="flex">
+    <div class="Top-board">
       <img :src="Dashboard" alt="" />
-      <p>Never worry about your Inventory</p>
+      <div>
+        <h4>Never worry about your Inventory</h4>
+        <q-btn label="create a bill" />
+      </div>
     </div>
     <div class="q-pa-md row items-start q-gutter-md">
       <q-card class="my-card">
@@ -15,8 +17,10 @@
       <q-card class="my-card">
         <q-card-section>Number of products to be arrived</q-card-section>
       </q-card>
+      <q-card class="my-card">
+        <q-card-section>Stock percentage</q-card-section>
+      </q-card>
     </div>
-    <h1 class="text-center">Welcome to the inventory home</h1>
   </q-page>
 </template>
 
@@ -38,5 +42,26 @@ export default defineComponent({
 .my-card {
   width: 100%;
   max-width: 250px;
+  height: 100px;
+  border-radius: 10px;
+}
+
+.Top-board {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #a1a9c1;
+  border-radius: 30px;
+  height: 40vh;
+  width: 100%;
+  margin: 50px 40px;
+}
+
+img {
+  // width: 250px;
+  padding: 20px 10px;
+}
+
+p {
 }
 </style>
