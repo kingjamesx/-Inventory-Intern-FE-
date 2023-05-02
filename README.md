@@ -1,6 +1,6 @@
-# Quasar App (quasar-project)
+# Inventory Management System
 
-A Quasar Project
+
 
 ## Install the dependencies
 ```bash
