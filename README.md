@@ -1,12 +1,12 @@
 # OURPASS_CAPSTONE
 
-## Ourpass Frontend Task
+### Ourpass Frontend Task
 
-# Overview
+## Overview
 
 This is an inventory management system that can be used by businesses to store and manage all items in thier store.
 
-# Basic Features
+## Basic Features
 
 1. Dashboard: This is the landing for all users and admin. it showcases different  items stored.
 5. Authentification: Users are to signup/signin inorder to view/add products.
@@ -14,7 +14,7 @@ This is an inventory management system that can be used by businesses to store a
 7. InventoryList: This page showcases all the added products in a list format.
 
 
-# Running The Project
+## Running The Project
 
 1. Clone this project locally.
 2. Run npm install in your bash/command line.
@@ -29,6 +29,7 @@ This is an inventory management system that can be used by businesses to store a
 3. Vuex
 4. Axios
 
+## Contributors
 
 1. [PreyeO](https://github.com/PreyeO)
 2. [kingjamesx](https://github.com/kingjamesx)
