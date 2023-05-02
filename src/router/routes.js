@@ -1,3 +1,4 @@
+// const token=localStorage.getItem('token')
 const routes = [
   {
     path: "/",
@@ -7,9 +8,21 @@ const routes = [
     path: "/signup",
     component: () => import("src/pages/BaseRegister.vue"),
   },
+  ,
+  {
+    path: "/forgot-password", 
+    component: () => import("src/pages/ForgetPassword.vue"),
+  },
   {
     path: "/dashboard",
     component: () => import("layouts/MainLayout.vue"),
+    beforeEnter: (to, from, next) => {
+      if(true){
+        next()
+      }else{
+        next('/')
+      }
+    },
     children: [
       { path: "", component: () => import("pages/IndexPage.vue") },
       {
