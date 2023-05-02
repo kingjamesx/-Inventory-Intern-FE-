@@ -131,7 +131,7 @@ function toggleLeftDrawer() {
   color: #102051 !important;
 }
 .rounded-border {
-  border-radius: 5px;
+  border-radius: 6px;
 }
 .search-input {
   width: 20%;
