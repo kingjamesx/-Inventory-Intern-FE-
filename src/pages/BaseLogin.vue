@@ -75,42 +75,33 @@
   </div>
 </template>
 
-<script >
-import { useRouter } from 'vue-router';
- export default{
-  data(){
-      return {
-          form:{
-              email:'',
-              password:''
-          },
-          router:useRouter()
-      }
-
-  },
-  methods:{
-
-  
-      submitForm(){
-      
-        this.$api.post('auth/login',this.form)
-        .then(res=>{
-            console.log(res)
-        this.$store.dispatch('auth/login',res.data)
-        this.router.push({ path: '/dashboard' })
-            
-        })
-        .catch(err=>{
-            console.log(err.message)
-
-        })
-     
+<script>
+import { useRouter } from "vue-router";
+export default {
+  data() {
+    return {
+      form: {
+        email: "",
+        password: "",
       },
- 
+      router: useRouter(),
+    };
   },
-  
-
- }
+  methods: {
+    submitForm() {
+      this.$api
+        .post("auth/login", this.form)
+        .then((res) => {
+          console.log(res);
+          this.$store.dispatch("auth/login", res.data);
+          this.router.push({ path: "/dashboard" });
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

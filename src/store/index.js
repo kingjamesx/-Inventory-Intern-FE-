@@ -2,7 +2,7 @@ import { store } from "quasar/wrappers";
 import { createStore } from "vuex";
 import createPersistedState from "vuex-persistedstate";
 import auth from "./auth";
-import { inventory } from "./Inventory";
+import inventory from "./Inventory";
 // import example from './module-example'
 
 /*
