@@ -14,7 +14,7 @@
             :rules="emailRules"
           />
           <AuthFieldPassword
-            label="password"
+            label="Password"
             v-model="form.password"
             placeholder="*******"
             :rules="passwordRules"
@@ -95,20 +95,29 @@ export default {
         this.loading = true;
         const response = await this.$api.post("auth/login", this.form);
         const data = await response.data;
-        this.$store.dispatch("auth/login", data);
+        const {
+          payload: { fullName: name, email: email },
+          access_token: token,
+        } = data;
+        this.$api.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+        this.$store.commit("auth/name", name);
+        this.$store.commit("auth/email", email);
+        this.$store.commit("auth/token", token);
+        localStorage.setItem("token", token);
         this.router.push({ path: "/dashboard" });
       } catch (error) {
+        console.log(error);
         this.loading = false;
-        this.negativeToast(error)
+        this.negativeToast(error);
       }
     },
-     negativeToast(error){
-        this.$q.notify({
-          type: "negative",
-          message: error.message,
-          position: "top",
-        });
-     }
+    negativeToast(error) {
+      this.$q.notify({
+        type: "negative",
+        message: error.message,
+        position: "top",
+      });
+    },
   },
 };
 </script>
@@ -128,6 +137,9 @@ export default {
 }
 .left {
   flex-basis: 55%;
+  @media (max-width: 1100px) {
+    flex-basis: 100%;
+  }
 }
 .right {
   flex-basis: 45%;
@@ -141,7 +153,8 @@ export default {
 
 .main {
   padding: 2.5rem;
-  padding-inline: 5rem;
+  padding-inline: 10rem;
+  margin-top: 0.7rem;
   @media (max-width: 551px) {
     padding-inline: 1rem;
   }

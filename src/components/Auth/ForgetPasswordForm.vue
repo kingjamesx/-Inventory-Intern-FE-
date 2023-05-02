@@ -16,7 +16,7 @@
             placeholder="Enter your email"
             v-model="form.email"
           />
-          <AuthButton :loading="loading" label="Submit" />
+          <AuthButton :loading="loading" label="Submit"  />
         </q-form>
         <div class="auth-footer">
           <p>Don't have an account?</p>
@@ -61,6 +61,7 @@ export default {
         this.positiveToast(this.form.email)
         
       }, 2000)
+      
     
     },
      positiveToast(email){

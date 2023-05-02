@@ -13,16 +13,16 @@ import { api } from "src/boot/axios"
 //       commit('login', {token: response.data.access_token, user: response})
 //     })
 // }
-export  function login({commit},loginData){
+// export  function login({commit},loginData){
      
-   return  commit('login',{loginData})
+//    return  commit('login',{loginData})
   
-}
+// }
 
 
 
-export async function logout({commit}){
+// export function logout({commit}){
 
- await commit('login',null)
+//   commit('login',null)
  
-}
+// }

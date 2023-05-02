@@ -99,6 +99,7 @@ export default {
         (val) => !!val || "Field is required",
         (val) => val == this.form.password || "Password is not matched",
       ],
+      
     };
   },
   methods: {
@@ -107,15 +108,29 @@ export default {
         this.loading = true;
         const response = await this.$api.post("auth/register", this.form);
         const data= await response.data
-        const message= await response.message 
+      const {
+        data:{
+          name:name,
+          email:email,
+        },
+        access_token:token
+       }=data
+        const message=  response.message 
         this.positiveToast(message)  
-        this.$store.dispatch("auth/login", data);
+        this.$store.commit('auth/name',name)
+        this.$store.commit('auth/email',email)
+        this.$store.commit('auth/token',token)
+        localStorage.setItem('token',token )
         this.router.push({ path: "/dashboard" });
       } catch (error) {
+        console.log(error)
         this.loading = false;
          this.negativeToast(error.message)
       }
+       
+    
     },
+    
     positiveToast(message){
         this.$q.notify({
           type: "positive",
@@ -169,7 +184,7 @@ export default {
 
 .main {
   padding: 2.5rem;
-  padding-inline: 5rem;
+  padding-inline: 8rem;
   @media (max-width: 551px) {
     padding-inline: 1rem;
   }

@@ -46,3 +46,9 @@
   }
        
 </script>
+<style lang="scss">
+  .label{
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+</style>

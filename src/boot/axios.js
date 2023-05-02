@@ -1,13 +1,15 @@
 import { boot } from 'quasar/wrappers'
 import axios from 'axios'
-
 // Be careful when using SSR for cross-request state pollution
 // due to creating a Singleton instance here;
 // If any client changes this (global) instance, it might be a
 // good idea to move this instance creation inside of the
 // "export default () => {}" function below (which runs individually
 // for each client)
-const api = axios.create({ baseURL: 'https://605c-102-89-32-251.ngrok-free.app/' })
+const api = axios.create({ baseURL: 'https://2d69-102-89-40-139.ngrok-free.app' })
+
+// interceptorcode
+
 
 export default boot(({ app }) => {
   // for use inside Vue files (Options API) through this.$axios and this.$api
