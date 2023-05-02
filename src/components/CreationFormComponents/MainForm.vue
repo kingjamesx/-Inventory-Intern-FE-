@@ -135,11 +135,10 @@ export default {
   props: {
     label: {
       type: String,
-      required: true,
     },
     options: {
       type: Array,
-      required: true,
+      
     },
   },
   data() {
