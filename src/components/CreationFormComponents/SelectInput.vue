@@ -14,7 +14,8 @@ export default {
 
   data() {
     return {
-      selected: this.selectMessages,
+      model: this.selectMessages,
+      selected: "",
     };
   },
 };

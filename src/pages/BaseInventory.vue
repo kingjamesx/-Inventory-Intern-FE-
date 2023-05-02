@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <q-btn >Test</q-btn>
     <SearchField />
     <TableList />
   </div>
@@ -13,6 +14,17 @@ export default {
     SearchField,
     TableList,
   },
+  methods:{
+          // async test(){
+          //   try{ 
+          // const reponse=this.$api.get("/inventory/all")
+          // console.log(response)
+                 
+          //   }catch(error){
+          //     console.log(error.message)
+          //   }
+          //  }
+  }
 };
 </script>
 

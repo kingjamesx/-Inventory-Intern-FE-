@@ -167,13 +167,13 @@ export default {
     },
   },
 
-   mounted() {
-    this.getInventories()
-  //   this.$api.get("/inventory/admin/all?status=draft");
-  //   then((res) => {
-  //     this.data = res.data;
-  //   });
-   },
+  //  mounted() {
+  //   this.getInventories()
+  // //   this.$api.get("/inventory/admin/all?status=draft");
+  // //   then((res) => {
+  // //     this.data = res.data;
+  // //   });
+  //  },
   // methods: {
   //   getInventory() {},
   // },

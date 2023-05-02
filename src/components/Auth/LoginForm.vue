@@ -93,7 +93,7 @@ export default {
     async submitForm() {
       try {
         this.loading = true;
-        const response = await this.$api.post("auth/login", this.form);
+        const response = await this.$api.post("/auth/login", this.form);
         const data = await response.data;
         const {
           payload: { fullName: name, email: email },
