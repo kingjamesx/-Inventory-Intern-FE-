@@ -1,6 +1,5 @@
 # OURPASS_CAPSTONE
-
-### Ourpass Frontend Task
+Ourpass Frontend Task
 
 ## Overview
 
