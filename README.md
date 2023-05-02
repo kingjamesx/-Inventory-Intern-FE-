@@ -21,7 +21,7 @@ This is an inventory management system that can be used by businesses to store a
 4. Now Browse through and test.
 
 
-# Dev Dependencies
+## Dev Dependencies
 
 1. Vue 3
 2. Quasar CLI
