@@ -3,6 +3,9 @@ export function someAction (context) {
 }
 */
 
+import { api } from "src/boot/axios"
+
+
 // export function register ({ commit }, form) {
 //   return api.post('/auth/register', {...form})
 //     .then(response => {
@@ -10,24 +13,16 @@ export function someAction (context) {
 //       commit('login', {token: response.data.access_token, user: response})
 //     })
 // }
-
-// export function login({ commit }, loginData) {
-//   return commit("login", { loginData });
+// export  function login({commit},loginData){
+     
+//    return  commit('login',{loginData})
+  
 // }
 
-// export async function logout({ commit }) {
-//   await commit("login", null);
+
+
+// export function logout({commit}){
+
+//   commit('login',null)
+ 
 // }
-
-import { api } from "src/boot/axios";
-
-export function login({ commit }, loginData) {
-  // store token in localstorage
-  localStorage.setItem("token", loginData.data.access_token);
-
-  return commit("login", { loginData });
-}
-
-export async function logout({ commit }) {
-  await commit("login", null);
-}

@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <q-btn @click="test">Test</q-btn>
     <div class="top-bar">
       <p class="text-weight-bold q-my-md">InventoryList</p>
       <q-form class="search">
@@ -182,7 +183,19 @@ export default {
       rows,
     };
   },
-};
+  methods:{
+      async test(){
+        try{
+          const response= await this.$api.get("/inventory/admin/all")
+        console.log(response)
+        }catch(error){
+          console.log(error.message)
+        }
+       
+      }
+  }
+  }
+ 
 </script>
 
 <style lang="scss" scoped>
