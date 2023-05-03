@@ -2,10 +2,8 @@
   <div>
     <div class="q-gutter-sm">
       <q-editor
-        v-model="editor"
-        :definitions="{
-          bold: { tip: 'My bold tooltip' },
-        }"
+        :value="message"
+        @input="$emit('update:message', $event.target.value)"
       />
     </div>
   </div>
@@ -13,10 +11,18 @@
 
 <script>
 export default {
-  data() {
-    return {
-      editor: "Your text goes here",
-    };
+  props: {
+    message: {
+      type: String,
+      required: true,
+      default: "",
+    },
   },
+
+  // data() {
+  //   return {
+  //     editor: this.text,
+  //   };
+  // },
 };
 </script>

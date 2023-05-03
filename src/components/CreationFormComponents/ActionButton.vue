@@ -18,11 +18,12 @@ export default {
           costPrice: Number(this.product.costPrice),
 
           quantityInStock: Number(this.product.quantityInStock),
-          quantityInStock: Number(this.product.discountValue),
-          dateAdded: new Date(
-            `${this.product.dateAdded} ${this.product.timeAdded}`
-          ).toUTCString(),
+          discountValue: Number(this.product.discountValue),
+          // dateAdded: new Date(
+          //   `${this.product.dateAdded} ${this.product.timeAdded}`
+          // ).toUTCString(),
           returnPolicy: this.product.returnPolicy == "yes" ? true : false,
+          // productLongDescription: this.product.productLongDescription == "",
           status,
         };
         // dispatch action

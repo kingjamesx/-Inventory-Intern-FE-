@@ -1,7 +1,13 @@
 <template>
   <div class="q-pa-md">
     <div class="q-gutter-y-md column">
-      <q-file color="teal" filled v-model="model" label="choose a file">
+      <q-file
+        color="teal"
+        filled
+        v-model="model"
+        label="choose a file"
+        type="file"
+      >
         <template v-slot:append>
           <q-icon name="cloud_upload" />
           <q-icon name="delete" />

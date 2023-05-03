@@ -78,7 +78,18 @@
           <LongInput type="date" v-model="product.expiryDate" />
           <div>
             <label>Product Long Description</label>
-            <TextEditor v-model="product.productLongDescription" />
+            <!-- <TextEditor
+              :message="product.productLongDescription"
+              @update:message="updateMessage"
+            /> -->
+            <div>
+              <div class="q-gutter-sm">
+                <q-editor
+                  v-model="product.productLongDescription"
+                  placeholder="Enter the product description"
+                />
+              </div>
+            </div>
             <span>Add a long description for your product</span>
           </div>
           <div class="flex return_policy q-pt-md">
@@ -113,7 +124,36 @@
 
       <q-form class="q-pa-sm shadow-2 q-mr-lg image_form">
         <div>
-          <UploadFile v-model="product.imageUrl" class="q-pa-lg" />
+          <div class="q-pa-md">
+            <div class="q-gutter-y-md column">
+              <q-file
+                color="teal"
+                filled
+                v-model="product.imageUrl"
+                label="choose a file"
+                type="file"
+              >
+                <template v-slot:append>
+                  <q-icon name="cloud_upload" />
+                  <q-icon name="delete" />
+                </template>
+              </q-file>
+              <!-- <q-file
+                color="teal"
+                filled
+                label="choose a file"
+                type="file"
+                @input="uploadFile"
+              >
+                <template v-slot:append>
+                  <q-icon name="cloud_upload" />
+                  <q-icon name="delete" />
+                </template>
+              </q-file> -->
+            </div>
+          </div>
+
+          <!-- <UploadFile class="q-pa-lg" /> -->
         </div>
       </q-form>
     </div>
@@ -123,8 +163,8 @@
 <script>
 import LongInput from "./LongInput.vue";
 import SelectInput from "./SelectInput.vue";
-import TextEditor from "./TextEditor.vue";
-import UploadFile from "./UploadFile.vue";
+// import TextEditor from "./TextEditor.vue";
+// import UploadFile from "./UploadFile.vue";
 import ActionButton from "./ActionButton.vue";
 import { mapGetters, mapActions } from "vuex";
 
@@ -132,7 +172,14 @@ import { api } from "../../boot/axios";
 
 export default {
   name: "MainForm",
-  components: { LongInput, SelectInput, UploadFile, ActionButton, TextEditor },
+  components: {
+    LongInput,
+
+    SelectInput,
+    // UploadFile,
+    ActionButton,
+    // TextEditor,
+  },
   props: {
     label: {
       type: String,
@@ -147,7 +194,7 @@ export default {
         ProductCategory: ["gadget", "automobile", "electronics", "groceries"],
         orderType: ["return", "purchase", "in stock", "out of stock"],
         discountType: ["fixed", "percentage"],
-        returnPolicy: ["true", "false"],
+        returnPolicy: ["yes", "no"],
       },
       product: {
         productName: "",
