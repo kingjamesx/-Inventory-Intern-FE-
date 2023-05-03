@@ -1,13 +1,14 @@
 <template>
-  <q-page class="flex flex-center">
-     <h1 class="text-center">Welcome to the inventory home</h1>
-  </q-page>
+  <div>
+    <Dashboard />
+  </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
+import Dashboard from "../components/DashBoard.vue";
 
-export default defineComponent({
-  name: 'IndexPage'
-})
+export default {
+  components: { Dashboard },
+};
 </script>
