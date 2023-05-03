@@ -3,7 +3,7 @@ import axios from "axios";
 import { LocalStorage } from "quasar";
 
 const api = axios.create({
-  baseURL: "https://ourpass-capstone.onrender.com/",
+  baseURL: "https://ourpass-capstone.onrender.com",
   headers: {
     Authorization: `Bearer token`,
   },

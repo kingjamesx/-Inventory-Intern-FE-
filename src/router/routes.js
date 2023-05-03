@@ -24,7 +24,7 @@ const routes = [
       }
     },
     children: [
-      { path: "", component: () => import("pages/IndexPage.vue") },
+      { path: "", component: () => import("src/pages/HomePage.vue") },
       {
         path: "/inventory",
         component: () => import("pages/BaseInventory.vue"),
