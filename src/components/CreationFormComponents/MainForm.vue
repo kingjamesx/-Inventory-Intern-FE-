@@ -45,11 +45,11 @@
             v-model="product.orderType"
           />
           <div class="flex form_discount">
-            <div>
+            <div class="discount_label">
               <label class="q-mr-md">Discount</label>
             </div>
             <div class="form_discounts">
-              <label class="q-mr-md">Add Discount</label>
+              <label class="q-mr-md add_discount">Add Discount</label>
               <q-toggle v-model="product.value" color="blue" />
             </div>
           </div>
@@ -67,11 +67,11 @@
             />
           </div>
           <div class="flex expiry_date">
-            <div>
+            <div class="expiry_label">
               <label class="q-mr-md">Expiry Date</label>
             </div>
             <div>
-              <label class="q-mr-md">Add Expiry Date</label>
+              <label class="q-mr-md add_expiry">Add Expiry Date</label>
               <q-toggle v-model="product.vals" color="blue" />
             </div>
           </div>
@@ -90,7 +90,7 @@
                 class="return"
               />
             </div>
-            <div>
+            <div class="discount_policy">
               <label>Add Discount</label>
               <q-toggle v-model="product.val" color="blue" />
             </div>
@@ -217,9 +217,23 @@ export default {
 .discount_input {
   width: 45%;
 }
-
+.discount_policy {
+  padding-top: 5.5px;
+}
+.discount_label {
+  padding-top: 5.5px;
+}
+.add_discount {
+  padding-left: 50px;
+}
+.add_expiry {
+  padding-left: 10px;
+}
 .expiry_date {
   justify-content: space-between;
+}
+.expiry_label {
+  padding-top: 5.5px;
 }
 .return_policy {
   justify-content: space-between;
@@ -237,7 +251,6 @@ export default {
 }
 h5 {
   padding-left: 5rem;
-  padding-top: 2rem;
 }
 
 @media (max-width: 760px) {

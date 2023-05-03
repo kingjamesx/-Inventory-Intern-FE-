@@ -3,8 +3,12 @@
     <div class="Top-board">
       <img :src="Dashboard" alt="" />
       <div>
-        <h4>Never worry about your Inventory</h4>
-        <q-btn label="create a bill" />
+        <div class="btns">
+          <h4>Never worry about your Inventory</h4>
+        </div>
+        <div>
+          <q-btn label="Create an Inventory" class="button" />
+        </div>
       </div>
     </div>
     <div class="q-pa-md row items-start q-gutter-md">
@@ -48,20 +52,39 @@ export default defineComponent({
 
 .Top-board {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  background-color: #a1a9c1;
+  justify-content: space-evenly;
+  background-color: #31a3a0;
   border-radius: 30px;
-  height: 40vh;
   width: 100%;
   margin: 50px 40px;
+  color: white;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .Top-board {
+    justify-content: center;
+  }
 }
 
 img {
   // width: 250px;
   padding: 20px 10px;
+  border-radius: 100%;
+  max-width: 250px;
+  height: 250px;
+  margin-top: 20px;
 }
 
+.btns {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.button {
+  margin-bottom: 10px;
+}
 p {
 }
 </style>
