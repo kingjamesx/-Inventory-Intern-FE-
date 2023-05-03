@@ -16,7 +16,7 @@
           />
           <SelectInput
             :label="'Select Product category'"
-            :options="ui.ProductCategory"
+            :options="ui.productCategory"
             v-model="product.productCategory"
           />
 
