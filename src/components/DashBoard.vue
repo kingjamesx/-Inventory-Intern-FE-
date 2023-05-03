@@ -99,14 +99,14 @@ img {
 .button {
   margin-bottom: 10px;
 }
-p {
-  padding: 16px;
-  margin-top: -16px;
-  margin-left: -16px;
-  align-items: flex-start;
-  display: flex;
-  flex-wrap: wrap;
-}
+// p {
+//   padding: 16px;
+//   margin-top: -16px;
+//   margin-left: -16px;
+//   align-items: flex-start;
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 
 @media (max-width: 768px) {
   .container {

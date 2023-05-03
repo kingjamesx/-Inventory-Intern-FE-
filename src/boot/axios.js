@@ -4,14 +4,14 @@ import { LocalStorage } from "quasar";
 
 const api = axios.create({
   baseURL: "https://ourpass-capstone.onrender.com",
-  headers: {
-    Authorization: `Bearer token`,
-  },
+  // headers: {
+  //   Authorization: `Bearer token`,
+  // },
 });
 
 // Set authorization header for all requests
 api.interceptors.request.use((config) => {
-  const token = LocalStorage.getItem("token");
+  const token = localStorage.getItem("token");
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }

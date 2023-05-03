@@ -1,7 +1,22 @@
 <template>
   <div class="q-pa-lg q-gutter-sm action_button">
-    <q-btn color="primary" @click="submit('Draft')" label="Save as Draft" />
-    <q-btn color="blue" @click="submit('Published')" label="Save & Publish" />
+    <q-btn
+      color="primary"
+      @click="
+        submit('Draft');
+        router.replace('/inventory');
+      "
+      label="Save as Draft"
+    />
+
+    <q-btn
+      color="blue"
+      @click="
+        submit('Published');
+        router.replace('/inventory');
+      "
+      label="Save & Publish"
+    />
   </div>
 </template>
 
@@ -19,10 +34,12 @@ export default {
 
           quantityInStock: Number(this.product.quantityInStock),
           quantityInStock: Number(this.product.discountValue),
+          // productLongDescription: this.product.productLongDescription == "",
           dateAdded: new Date(
             `${this.product.dateAdded} ${this.product.timeAdded}`
           ).toUTCString(),
           returnPolicy: this.product.returnPolicy == "yes" ? true : false,
+
           status,
         };
         // dispatch action

@@ -1,9 +1,12 @@
 <template>
   <div class="q-pa-md">
-    <q-table title="Treats" :rows="rows" :columns="columns" row-key="name" />
+    <q-table title="" :rows="rows" :columns="columns" row-key="name" />
     <div v-for="(product, index) in products" :key="index">
-      {{ product.title }}
+      {{ product.costPrice }}
     </div>
+    <!-- <div v-if="responseData === null">loading....</div> -->
+    <!-- <div v-else>{{ responseData }}</div> -->
+    <p></p>
   </div>
 </template>
 
@@ -11,171 +14,82 @@
 import axios from "axios";
 
 export default {
+  async created() {
+    const response = await this.getInventories();
+    this.reponseData = response;
+  },
   data() {
     return {
       products: [],
       columns: [
         {
-          name: "name",
-          required: true,
-          label: "Products",
-          align: "left",
-          field: (row) => row.name,
-          format: (val) => `${val}`,
-          sortable: true,
-        },
-        {
-          name: "calories",
+          name: "productName",
           align: "center",
           label: "Product Name",
-          field: "calories",
+          field: "productName",
           sortable: true,
         },
-        { name: "fat", label: "Selling Price", field: "fat", sortable: true },
-        { name: "carbs", label: "Discount", field: "carbs" },
-        { name: "protein", label: "Variant", field: "protein" },
-        { name: "sodium", label: "Available", field: "sodium" },
         {
-          name: "calcium",
+          name: "productCategory",
+          label: "Poduct Category",
+          field: "productCategory",
+        },
+        {
+          name: "sellingPrice",
+          label: "Selling Price",
+          field: "sellingPrice",
+          sortable: true,
+        },
+        { name: "discountValue", label: "Discount", field: "discountValue" },
+
+        {
+          name: "productLongDescription",
+          label: "Description",
+          field: "productLongDescription",
+        },
+        {
+          name: "status",
+          label: "Status",
+          field: "status",
+        },
+        {
+          name: "orderType",
           label: "Order Type",
-          field: "calcium",
+          field: "orderType",
           sortable: true,
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10),
         },
         {
-          name: "iron",
+          name: "expiryDate",
           label: "Expiry Date",
-          field: "iron",
+          field: "expiryDate",
           sortable: true,
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10),
         },
       ],
 
-      rows: [
-        {
-          name: "Automobile",
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          sodium: 87,
-          calcium: "14%",
-          iron: "1%",
-        },
-        {
-          name: "Gadget",
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          sodium: 129,
-          calcium: "8%",
-          iron: "1%",
-        },
-        {
-          name: "Electronics",
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          sodium: 337,
-          calcium: "6%",
-          iron: "7%",
-        },
-        {
-          name: "Grocery",
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          sodium: 413,
-          calcium: "3%",
-          iron: "8%",
-        },
-        {
-          name: "Automobile",
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          sodium: 327,
-          calcium: "7%",
-          iron: "16%",
-        },
-        {
-          name: "Gadget",
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          sodium: 50,
-          calcium: "0%",
-          iron: "0%",
-        },
-        {
-          name: "Electronics",
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          sodium: 38,
-          calcium: "0%",
-          iron: "2%",
-        },
-        {
-          name: "Grocery",
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          sodium: 562,
-          calcium: "0%",
-          iron: "45%",
-        },
-        {
-          name: "Automobile",
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          sodium: 326,
-          calcium: "2%",
-          iron: "22%",
-        },
-        {
-          name: "Gadget",
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          sodium: 54,
-          calcium: "12%",
-          iron: "6%",
-        },
-      ],
+      rows: [],
     };
   },
 
   methods: {
     async getInventories() {
       try {
-        let response = await this.$api.get("/inventory/all");
-        console.log(response);
+        const response = await this.$api.get("/inventory/all");
+        this.rows = response.data;
+        return response.data;
       } catch (err) {
         console.log(err);
       }
     },
   },
 
-  //  mounted() {
-  //   this.getInventories()
+  // mounted() {
+  // this.getInventories()
   // //   this.$api.get("/inventory/admin/all?status=draft");
   // //   then((res) => {
   // //     this.data = res.data;
   // //   });
-  //  },
-  // methods: {
-  //   getInventory() {},
   // },
 };
 </script>

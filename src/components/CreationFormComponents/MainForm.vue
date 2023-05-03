@@ -162,7 +162,7 @@ export default {
         dateAdded: "",
         // timeAdded: "",
         productLongDescription: "",
-        imageUrl: "",
+        // imageUrl: "",
         status: ["Draft", "Published"],
         expiryDate: "",
         // value: true,

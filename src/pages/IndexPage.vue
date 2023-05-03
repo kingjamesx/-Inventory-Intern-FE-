@@ -1,5 +1,5 @@
 <template>
-  <q-page class="container">
+  <q>
     <!-- <div class="Top-board">
       <img :src="Dashboard" alt="" />
       <div class="btns">
@@ -37,7 +37,7 @@
         </q-card-section>
       </q-card>
     </div> -->
-  </q-page>
+  </q>
 </template>
 
 <script>
