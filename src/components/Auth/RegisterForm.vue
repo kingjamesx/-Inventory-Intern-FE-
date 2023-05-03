@@ -31,7 +31,7 @@
           <AuthField
             label="Phone Number"
             v-model="form.phoneNumber"
-            placeholder="Enter your Fullname"
+            placeholder="Enter your Phone Number"
             :rules="businessRule"
             mask="###########"
           />
@@ -124,7 +124,6 @@ export default {
         localStorage.setItem('token',token )
         this.router.push({ path: "/dashboard" });
       } catch (error) {
-        console.log(error)
         this.loading = false;
          this.negativeToast(error.message)
       }

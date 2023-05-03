@@ -99,8 +99,6 @@ export default {
           payload: { fullName: name, email: email },
           access_token: token,
         } = data;
-        console.log(data)
-        console.log(token)
         this.$api.defaults.headers.common['Authorization'] = 'Bearer ' + token;
         this.$store.commit("auth/name", name);
         this.$store.commit("auth/email", email);
@@ -108,7 +106,6 @@ export default {
         localStorage.setItem("token", token);
         this.router.push({ path: "/dashboard" });
       } catch (error) {
-        console.log(error);
         this.loading = false;
         this.negativeToast(error);
       }
