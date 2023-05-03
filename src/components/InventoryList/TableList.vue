@@ -18,7 +18,7 @@ export default {
         {
           name: "name",
           required: true,
-          label: "Item",
+          label: "Products",
           align: "left",
           field: (row) => row.name,
           format: (val) => `${val}`,
@@ -27,24 +27,24 @@ export default {
         {
           name: "calories",
           align: "center",
-          label: "Variants",
+          label: "Product Name",
           field: "calories",
           sortable: true,
         },
-        { name: "fat", label: "SKU", field: "fat", sortable: true },
-        { name: "carbs", label: "Carbs (g)", field: "carbs" },
-        { name: "protein", label: "Protein (g)", field: "protein" },
+        { name: "fat", label: "Selling Price", field: "fat", sortable: true },
+        { name: "carbs", label: "Discount", field: "carbs" },
+        { name: "protein", label: "Variant", field: "protein" },
         { name: "sodium", label: "Available", field: "sodium" },
         {
           name: "calcium",
-          label: "Calcium (%)",
+          label: "Order Type",
           field: "calcium",
           sortable: true,
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10),
         },
         {
           name: "iron",
-          label: "Iron (%)",
+          label: "Expiry Date",
           field: "iron",
           sortable: true,
           sort: (a, b) => parseInt(a, 10) - parseInt(b, 10),
@@ -53,7 +53,7 @@ export default {
 
       rows: [
         {
-          name: "Frozen Yogurt",
+          name: "Automobile",
           calories: 159,
           fat: 6.0,
           carbs: 24,
@@ -63,7 +63,7 @@ export default {
           iron: "1%",
         },
         {
-          name: "Ice cream sandwich",
+          name: "Gadget",
           calories: 237,
           fat: 9.0,
           carbs: 37,
@@ -73,7 +73,7 @@ export default {
           iron: "1%",
         },
         {
-          name: "Eclair",
+          name: "Electronics",
           calories: 262,
           fat: 16.0,
           carbs: 23,
@@ -83,7 +83,7 @@ export default {
           iron: "7%",
         },
         {
-          name: "Cupcake",
+          name: "Grocery",
           calories: 305,
           fat: 3.7,
           carbs: 67,
@@ -93,7 +93,7 @@ export default {
           iron: "8%",
         },
         {
-          name: "Gingerbread",
+          name: "Automobile",
           calories: 356,
           fat: 16.0,
           carbs: 49,
@@ -103,7 +103,7 @@ export default {
           iron: "16%",
         },
         {
-          name: "Jelly bean",
+          name: "Gadget",
           calories: 375,
           fat: 0.0,
           carbs: 94,
@@ -113,7 +113,7 @@ export default {
           iron: "0%",
         },
         {
-          name: "Lollipop",
+          name: "Electronics",
           calories: 392,
           fat: 0.2,
           carbs: 98,
@@ -123,7 +123,7 @@ export default {
           iron: "2%",
         },
         {
-          name: "Honeycomb",
+          name: "Grocery",
           calories: 408,
           fat: 3.2,
           carbs: 87,
@@ -133,7 +133,7 @@ export default {
           iron: "45%",
         },
         {
-          name: "Donut",
+          name: "Automobile",
           calories: 452,
           fat: 25.0,
           carbs: 51,
@@ -143,7 +143,7 @@ export default {
           iron: "22%",
         },
         {
-          name: "KitKat",
+          name: "Gadget",
           calories: 518,
           fat: 26.0,
           carbs: 65,
