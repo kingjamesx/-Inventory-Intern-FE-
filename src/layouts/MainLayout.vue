@@ -87,16 +87,7 @@
               </q-item>
           </q-list>
         </q-scroll-area>
-        <div  class="circle">
-          <q-btn
-            dense
-            round
-            unelevated
-            color="accent"
-            icon="chevron_left"
-            @click="miniState = true"
-          />
-        </div>
+        
       </q-drawer>
 
       <q-page-container>
@@ -225,12 +216,6 @@ export default {
 .drawer{
   background-color: #fff !important;
 }
-.circle{
-  border-end-end-radius: 2px solid red;
-  position: absolute;
-  top: -0.1rem;
-  left: 13rem;
-  z-index: 50;
-}
+
 </style>
 

@@ -108,14 +108,15 @@ export default {
         this.loading = true;
         const response = await this.$api.post("auth/register", this.form);
         const data= await response.data
-      const {
-        data:{
-          name:name,
-          email:email,
-        },
-        access_token:token
-       }=data
-        const message=  response.message 
+        const {message:message,
+         data:{
+           newBusiness:{
+             name:name,
+             email:email
+           },
+           access_token:token
+         }
+      }=data
         this.positiveToast(message)  
         this.$store.commit('auth/name',name)
         this.$store.commit('auth/email',email)

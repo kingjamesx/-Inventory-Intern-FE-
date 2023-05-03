@@ -99,6 +99,8 @@ export default {
           payload: { fullName: name, email: email },
           access_token: token,
         } = data;
+        console.log(data)
+        console.log(token)
         this.$api.defaults.headers.common['Authorization'] = 'Bearer ' + token;
         this.$store.commit("auth/name", name);
         this.$store.commit("auth/email", email);
@@ -126,6 +128,7 @@ export default {
 .container {
   height: 100vh;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   @media (min-width: 1500px) {
     max-width: 1200px;
