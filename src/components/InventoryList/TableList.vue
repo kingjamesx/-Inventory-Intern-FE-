@@ -4,7 +4,7 @@
     <div v-for="(product, index) in products" :key="index">
       {{ product.costPrice }}
     </div>
-    j
+    
   </div>
 </template>
 
