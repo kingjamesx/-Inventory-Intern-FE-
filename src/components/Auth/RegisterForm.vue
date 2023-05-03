@@ -11,15 +11,15 @@
         <p class="m-text">Sign into your account to get started</p>
         <q-form @submit="submitForm">
           <AuthField
-            label="Fullname"
+            label="Full Name"
             v-model="form.name"
-            placeholder="Enter your Fullname"
+            placeholder="Enter your Full Name"
             :rules="nameRule"
           />
           <AuthField
-            label="Businessname"
+            label="Business Name"
             v-model="form.businessName"
-            placeholder="Enter your Business name"
+            placeholder="Enter your Business Name"
             :rules="businessRule"
           />
           <AuthField
@@ -29,7 +29,7 @@
             :rules="emailRule"
           />
           <AuthField
-            label="phone Number"
+            label="Phone Number"
             v-model="form.phoneNumber"
             placeholder="Enter your Fullname"
             :rules="businessRule"
