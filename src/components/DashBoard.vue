@@ -3,8 +3,8 @@
     <div class="Top-board">
       <img :src="Dashboard" alt="" />
       <div class="mini-top-bar">
-        <h4>Never worry about your Inventory</h4>
-        <q-btn label="create a bill" class="button" />
+       <div><h4>Never worry about your Inventory</h4></div> 
+       <div><q-btn label="create Inventory" class="button" to="/createinventory" /></div> 
       </div>
     </div>
     <h3>Products</h3>
@@ -80,6 +80,11 @@ export default defineComponent({
 
 .mini-top-bar {
   padding: 1px 60px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 2rem;
+  color: #fff;
 }
 
 .button {
@@ -106,6 +111,7 @@ img {
 }
 .button {
   margin-bottom: 10px;
+
 }
 p {
   padding: 16px;
