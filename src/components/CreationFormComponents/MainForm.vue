@@ -1,17 +1,18 @@
 <template>
-  <div>
+  <div class="all">
     <div class="action_buttons">
       <h5>Inventory</h5>
       <ActionButton class="buttons" :product="product" />
     </div>
-    <div class="flex creation_forms">
-      <div>
+    <div class="creation_forms">
+      <div class="hello">
         <q-form @submit.prevent class="q-pa-md shadow-2 details_form flex">
           <label>Product Name</label>
           <LongInput
             :placeholder="'Canon EOS Rebel T7'"
             v-model="product.productName"
             required
+            class="long_input"
           />
           <SelectInput
             :label="'Select Product category'"
@@ -82,11 +83,11 @@
           </div>
           <div class="flex return_policy q-pt-md">
             <div>
-              <label>Return Policy</label>
               <SelectInput
                 :label="'Return Policy'"
                 :options="ui.returnPolicy"
                 v-model="product.returnPolicy"
+                class="return"
               />
             </div>
             <div>
@@ -112,7 +113,7 @@
 
       <q-form class="q-pa-sm shadow-2 q-mr-lg image_form">
         <div>
-          <UploadFile style="height: 20rem" v-model="product.imageUrl" />
+          <UploadFile v-model="product.imageUrl" class="q-pa-lg" />
         </div>
       </q-form>
     </div>
@@ -135,11 +136,9 @@ export default {
   props: {
     label: {
       type: String,
-      required: true,
     },
     options: {
       type: Array,
-      required: true,
     },
   },
   data() {
@@ -182,16 +181,25 @@ export default {
 .creation_forms {
   gap: 3rem;
   flex-wrap: wrap;
-  min-width: 100%;
+  display: flex;
 }
+
 .details_form {
   min-width: 100%;
   flex-wrap: wrap;
   flex-direction: column;
-  margin-left: 2rem;
+  margin: 0 auto;
+  margin-bottom: 1rem;
 }
+.hello {
+  margin: 0 auto;
+}
+
 .image_form {
   min-width: 30%;
+
+  margin: 0 auto;
+  margin-bottom: 1rem;
 }
 .product_pricing {
   flex-wrap: wrap;
@@ -209,6 +217,7 @@ export default {
 .discount_input {
   width: 45%;
 }
+
 .expiry_date {
   justify-content: space-between;
 }
@@ -247,18 +256,29 @@ h5 {
     min-width: 1rem;
     margin-top: 0;
   }
+  .return {
+    width: 7rem;
+  }
+
+  .form_date_time {
+    width: 40%;
+  }
 }
 
 @media (min-width: 762px) {
   .image_form {
     min-width: 20%;
     margin: 0 auto;
+    margin-bottom: 1rem;
   }
   .details_form {
     min-width: 50%;
   }
   .creation_forms {
     gap: 1rem;
+  }
+  .return {
+    width: 12rem;
   }
 }
 
@@ -268,6 +288,21 @@ h5 {
   }
   .image_form {
     min-width: 20%;
+  }
+  .creation_forms {
+    justify-content: center;
+  }
+}
+
+@media (min-width: 1027px) {
+  .long_input {
+    width: 40rem;
+  }
+  .image_form {
+    width: 20rem;
+  }
+  .return {
+    width: 18rem;
   }
 }
 </style>

@@ -4,7 +4,7 @@
       <q-editor
         v-model="editor"
         :definitions="{
-          bold: { icon: B, tip: 'My bold tooltip' },
+          bold: { tip: 'My bold tooltip' },
         }"
       />
     </div>

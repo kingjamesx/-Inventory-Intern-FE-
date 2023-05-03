@@ -13,6 +13,7 @@ export default {
     SearchField,
     TableList,
   },
+ 
 };
 </script>
 

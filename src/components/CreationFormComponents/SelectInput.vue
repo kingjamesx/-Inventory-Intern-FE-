@@ -1,9 +1,9 @@
 <template>
   <q-select
     filled
-    v-model="selectMessages"
+    v-model="selected"
     @change="$emit('input', selected)"
-    class="q-mb-lg"
+    class="q-mb-lg input"
   />
 </template>
 
@@ -14,7 +14,7 @@ export default {
 
   data() {
     return {
-      model: this.selectMessage,
+      model: this.selectMessages,
       selected: "",
     };
   },

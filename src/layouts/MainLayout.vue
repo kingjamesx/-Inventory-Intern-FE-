@@ -230,7 +230,7 @@ border-end-end-radius: 2px solid red;
 position: absolute;
 top: -0.1rem;
 left: 13rem;
-z-index: 50;
+z-index: 10;
 }
 </style>
 
