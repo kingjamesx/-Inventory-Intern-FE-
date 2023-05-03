@@ -4,9 +4,7 @@
     <div v-for="(product, index) in products" :key="index">
       {{ product.costPrice }}
     </div>
-    <!-- <div v-if="responseData === null">loading....</div> -->
-    <!-- <div v-else>{{ responseData }}</div> -->
-    <p></p>
+    j
   </div>
 </template>
 

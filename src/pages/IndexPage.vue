@@ -54,7 +54,7 @@
 // });
 </script>
 
- <style scoped>
+<style scoped>
 /* .container {
   padding: 0px 50px;
 }

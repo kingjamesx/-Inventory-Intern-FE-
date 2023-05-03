@@ -33,6 +33,7 @@ export default {
           costPrice: Number(this.product.costPrice),
 
           quantityInStock: Number(this.product.quantityInStock),
+<<<<<<< HEAD
           quantityInStock: Number(this.product.discountValue),
           // productLongDescription: this.product.productLongDescription == "",
           dateAdded: new Date(
@@ -40,6 +41,14 @@ export default {
           ).toUTCString(),
           returnPolicy: this.product.returnPolicy == "yes" ? true : false,
 
+=======
+          discountValue: Number(this.product.discountValue),
+          // dateAdded: new Date(
+          //   `${this.product.dateAdded} ${this.product.timeAdded}`
+          // ).toUTCString(),
+          returnPolicy: this.product.returnPolicy == "yes" ? true : false,
+          // productLongDescription: this.product.productLongDescription == "",
+>>>>>>> b57317e85ae079df83f5fe8605451a10b834e170
           status,
         };
         // dispatch action
