@@ -2,9 +2,13 @@
   <q-page class="container">
     <div class="Top-board">
       <img :src="Dashboard" alt="" />
-      <div class="mini-top-bar">
-        <h4>Never worry about your Inventory</h4>
-        <q-btn label="create a bill" class="button" />
+      <div class="btns">
+        <div>
+          <h4>Never worry about your Inventory</h4>
+        </div>
+        <div>
+          <q-btn label="create a bill" class="button" />
+        </div>
       </div>
     </div>
     <div class="q-pa-md row items-start q-gutter-md" id="Btn-wrapper">
@@ -50,9 +54,8 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 .container {
-  //
   padding: 0px 50px;
 }
 .my-card {
@@ -85,7 +88,6 @@ h4 {
 }
 
 img {
-  // width: 250px;
   padding: 20px 10px;
   border-radius: 100%;
   max-width: 250px;
@@ -97,17 +99,11 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+  color: white;
 }
 .button {
   margin-bottom: 10px;
-}
-p {
-  padding: 16px;
-  margin-top: -16px;
-  margin-left: -16px;
-  align-items: flex-start;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {
@@ -117,10 +113,8 @@ p {
 
   .Top-board {
     display: block;
-    min-height: 85vh;
     margin: 44px 0px;
     padding: 10px 25px;
-    // width: 100px;
   }
 
   img {
