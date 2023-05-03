@@ -191,7 +191,7 @@ export default {
   data() {
     return {
       ui: {
-        ProductCategory: ["gadget", "automobile", "electronics", "groceries"],
+        productCategory: ["gadget", "automobile", "electronics", "groceries"],
         orderType: ["return", "purchase", "in stock", "out of stock"],
         discountType: ["fixed", "percentage"],
         returnPolicy: ["yes", "no"],
@@ -209,7 +209,7 @@ export default {
         dateAdded: "",
         // timeAdded: "",
         productLongDescription: "",
-        imageUrl: "",
+        // imageUrl: "",
         status: ["Draft", "Published"],
         expiryDate: "",
         // value: true,
