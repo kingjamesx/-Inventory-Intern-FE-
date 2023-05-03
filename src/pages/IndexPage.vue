@@ -1,28 +1,36 @@
 <template>
-  <q-page class="flex">
+  <q-page class="container">
     <div class="Top-board">
       <img :src="Dashboard" alt="" />
-      <div>
-        <div class="btns">
-          <h4>Never worry about your Inventory</h4>
-        </div>
-        <div>
-          <q-btn label="Create an Inventory" class="button" />
-        </div>
+      <div class="mini-top-bar">
+        <h4>Never worry about your Inventory</h4>
+        <q-btn label="create a bill" class="button" />
       </div>
     </div>
-    <div class="q-pa-md row items-start q-gutter-md">
+    <div class="q-pa-md row items-start q-gutter-md" id="Btn-wrapper">
       <q-card class="my-card">
-        <q-card-section>Out of stock products</q-card-section>
+        <q-card-section
+          >Out of stock products
+          <q-icon name="warning_amber" color="pink" />
+        </q-card-section>
       </q-card>
       <q-card class="my-card">
-        <q-card-section>products on low stock</q-card-section>
+        <q-card-section
+          >products on low stock
+          <q-icon name="warning_amber" color="blue" />
+        </q-card-section>
       </q-card>
       <q-card class="my-card">
-        <q-card-section>Number of products to be arrived</q-card-section>
+        <q-card-section>
+          Number of products to be arrived
+          <q-icon name="fire_truck" color="green" />
+        </q-card-section>
       </q-card>
       <q-card class="my-card">
-        <q-card-section>Stock percentage</q-card-section>
+        <q-card-section
+          >Stock percentage
+          <q-icon name="pie_chart" color="red" />
+        </q-card-section>
       </q-card>
     </div>
   </q-page>
@@ -43,6 +51,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+.container {
+  //
+  padding: 0px 50px;
+}
 .my-card {
   width: 100%;
   max-width: 250px;
@@ -56,16 +68,20 @@ export default defineComponent({
   background-color: #31a3a0;
   border-radius: 30px;
   width: 100%;
-  margin: 50px 40px;
-  color: white;
-  flex-wrap: wrap;
-  text-align: center;
+  margin: 50px 0px;
 }
 
-@media screen and (max-width: 768px) {
-  .Top-board {
-    justify-content: center;
-  }
+.mini-top-bar {
+  padding: 1px 60px;
+}
+
+.button {
+  color: white;
+  margin: 0px 17px;
+}
+
+h4 {
+  margin: 25px 0px;
 }
 
 img {
@@ -86,5 +102,41 @@ img {
   margin-bottom: 10px;
 }
 p {
+  padding: 16px;
+  margin-top: -16px;
+  margin-left: -16px;
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0px 1px;
+  }
+
+  .Top-board {
+    display: block;
+    min-height: 85vh;
+    margin: 44px 0px;
+    padding: 10px 25px;
+    // width: 100px;
+  }
+
+  img {
+    padding: 20px 25px;
+    width: 100%;
+  }
+
+  #Btn-wrapper {
+    display: block;
+    padding: 16px 60px;
+  }
+
+  .my-card {
+    max-width: none;
+    font-size: 20px;
+    font-weight: 500;
+  }
 }
 </style>
