@@ -7,14 +7,14 @@
        <div><q-btn label="create Inventory" class="button" to="/createinventory" /></div> 
       </div>
     </div>
-    <h3>Products</h3>
+    <h3 class="product__title">Products</h3>
     <div v-if="products.length>0" class="products-container">
       <q-card class="card-box" v-for="item in products" :key="item.id">
       <!-- <img src="https://cdn.quasar.dev/img/mountains.jpg"> -->
       <img :src="item.imageUrl[0]">
 
-      <q-card-section>
-        <div class="text-h6">{{ item.productName }}</div>
+      <q-card-section class="pn-c">
+        <div class="text-h6 pn">{{ item.productName }}</div>
         <div class="text-subtitle2">₦{{ item.sellingPrice }}</div>
       </q-card-section>
 
@@ -23,7 +23,7 @@
       </q-card-section> -->
     </q-card>
     </div>
-     <div v-else>
+     <div v-else class="product__title">
        <h5>you don't have any products in inventory</h5>
      </div>
   </q-page>
@@ -155,11 +155,19 @@ p {
   width: 100%;
   max-width: 250px;
 }
+.pn{
+word-wrap: break-word;
+font-size: 14px;
+}
+.product__title{
+padding-inline: 1rem;
+}
 .products-container{
  display: grid;
  grid-template-columns: repeat(4,1fr);
  gap: 0.52rem;
  padding-bottom: 3rem;
+ place-items: center;
  @media (max-width:1200px) {
  grid-template-columns: repeat(3,1fr);
   
@@ -169,7 +177,6 @@ p {
  }
  @media (max-width:436px) {
  grid-template-columns: repeat(1,1fr);
- place-items: center;
  }
 }
 </style>

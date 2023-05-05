@@ -106,14 +106,22 @@ export default {
         localStorage.setItem("token", token);
         this.router.push({ path: "/dashboard" });
       } catch (error) {
+        console.log(error)
+        let msg=error.message;
+        if(error.message=='Request failed with status code 500'){
+          msg='User does not exist'
+        }
+        if(error.message=='Request failed with status code 401'){
+          msg="Password is incorrect "
+        }
         this.loading = false;
-        this.negativeToast(error);
+        this.negativeToast(msg);
       }
     },
     negativeToast(error) {
       this.$q.notify({
         type: "negative",
-        message: error.message,
+        message: error,
         position: "top",
       });
     },

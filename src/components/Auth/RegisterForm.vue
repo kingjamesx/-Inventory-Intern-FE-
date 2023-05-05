@@ -124,8 +124,12 @@ export default {
         localStorage.setItem('token',token )
         this.router.push({ path: "/dashboard" });
       } catch (error) {
+        let msg=error.message
+        if(error.message=='Request failed with status code 409'){
+          msg="email, phone number or business name already exists"
+        }
         this.loading = false;
-         this.negativeToast(error.message)
+         this.negativeToast(msg)
       }
        
     
