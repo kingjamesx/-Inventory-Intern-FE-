@@ -1,14 +1,10 @@
 <template>
-  <q>
-    <!-- <div class="Top-board">
+  <q-page class="container">
+    <div class="Top-board">
       <img :src="Dashboard" alt="" />
-      <div class="btns">
-        <div>
-          <h4>Never worry about your Inventory</h4>
-        </div>
-        <div>
-          <q-btn label="create a bill" class="button" />
-        </div>
+      <div class="mini-top-bar">
+        <h4>Never worry about your Inventory</h4>
+        <q-btn label="create a bill" class="button" />
       </div>
     </div>
     <div class="q-pa-md row items-start q-gutter-md" id="Btn-wrapper">
@@ -36,26 +32,26 @@
           <q-icon name="pie_chart" color="red" />
         </q-card-section>
       </q-card>
-    </div> -->
-  </q>
+    </div>
+  </q-page>
 </template>
 
 <script>
-// import { defineComponent } from "vue";
-// import Dashboard from "../assets/Dashboard.jpeg";
+import { defineComponent } from "vue";
+import Dashboard from "../assets/Dashboard.jpeg";
 
-// export default defineComponent({
-//   name: "IndexPage",
-//   data: function () {
-//     return {
-//       Dashboard: Dashboard,
-//     };
-//   },
-// });
+export default defineComponent({
+  name: "IndexPage",
+  data: function () {
+    return {
+      Dashboard: Dashboard,
+    };
+  },
+});
 </script>
 
-<style scoped>
-/* .container {
+<style lang="scss" scoped>
+.container {
   padding: 0px 50px;
 }
 .my-card {
@@ -68,7 +64,7 @@
 .Top-board {
   display: flex;
   justify-content: space-evenly;
-  background-color: #31a3a0;
+  background-color: #31a3a0 !important;
   border-radius: 30px;
   width: 100%;
   margin: 50px 0px;
@@ -99,12 +95,18 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: center;
-  color: white;
 }
 .button {
   margin-bottom: 10px;
 }
+// p {
+//   padding: 16px;
+//   margin-top: -16px;
+//   margin-left: -16px;
+//   align-items: flex-start;
+//   display: flex;
+//   flex-wrap: wrap;
+// }
 
 @media (max-width: 768px) {
   .container {
@@ -113,8 +115,10 @@ img {
 
   .Top-board {
     display: block;
+    min-height: 85vh;
     margin: 44px 0px;
     padding: 10px 25px;
+    // width: 100px;
   }
 
   img {
@@ -132,5 +136,5 @@ img {
     font-size: 20px;
     font-weight: 500;
   }
-} */
+}
 </style>

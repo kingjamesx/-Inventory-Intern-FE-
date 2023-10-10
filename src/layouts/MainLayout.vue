@@ -1,42 +1,108 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+  <q-layout view="hHh Lpr lff" class="shadow-2 rounded-borders body">
+    <q-header :class="$q.dark.isActive ? 'bg-secondary' : 'bg-black'">
+      <q-toolbar class="toolbar">
+        <q-btn flat @click="drawer = !drawer" round dense icon="menu" />
 
-        <q-toolbar-title>
-          Quasar App
+        <q-toolbar-title class="text-weight-bold q-ml-lg ourpass">
+          <q-avatar>
+            <img src="../assets/ourpass-logo.png" />
+          </q-avatar>
+          OurPass
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <q-toolbar-title class="text-weight-bold inventory">
+          <q-avatar>
+            <img src="../assets/avatar.png" />
+          </q-avatar>
+          Inventory
+        </q-toolbar-title>
+        <q-input
+          dark
+          dense
+          standout
+          input-class="text-left "
+          class="q-mr-lg bg-blue-grey-11 text-black rounded-border search-input"
+          placeholder="search"
+        >
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+        <q-space class="space" />
+        <q-list class="flex actions">
+          <q-item>
+            <q-btn round flat icon="notifications">
+              <q-badge floating color="red" rounded label="2" />
+            </q-btn>
+          </q-item>
+          <q-item>
+            <q-btn round flat icon="settings" />
+          </q-item>
+          <q-item>
+            <q-avatar>
+              <img src="https://cdn.quasar.dev/img/avatar.png" />
+            </q-avatar>
+          </q-item>
+        </q-list>
       </q-toolbar>
     </q-header>
 
     <q-drawer
-      v-model="leftDrawerOpen"
+      class="drawer"
+      v-model="drawer"
       show-if-above
+      :width="230"
+      :breakpoint="500"
       bordered
+      :class="$q.dark.isActive ? 'bg-grey-9' : 'bg-grey-3'"
     >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
+      <q-scroll-area class="fit">
+        <q-list>
+          <q-item>
+            <p>Menu</p>
+          </q-item>
+          <template v-for="(menuItem, index) in menuList" :key="index">
+            <q-item
+              clickable
+              v-ripple
+              @click="active"
+              :to="menuItem.link"
+              active-class="active"
+              exact
+            >
+              <q-item-section avatar>
+                <q-icon :name="menuItem.icon" />
+              </q-item-section>
+              <q-item-section>
+                {{ menuItem.label }}
+              </q-item-section>
+            </q-item>
+            <q-separator :key="'sep' + index" v-if="menuItem.separator" />
+          </template>
+          <q-item
+            clickable
+            v-ripple
+            @click="logout"
+            active-class="active"
+            exact
+          >
+            <q-item-section avatar>
+              <q-icon name="logout" />
+            </q-item-section>
+            <q-item-section> Logout </q-item-section>
+          </q-item>
+        </q-list>
+      </q-scroll-area>
+      <div class="circle">
+        <q-btn
+          dense
+          round
+          unelevated
+          color="accent"
+          icon="chevron_left"
+          @click="miniState = true"
         />
-      </q-list>
+      </div>
     </q-drawer>
 
     <q-page-container>
@@ -46,71 +112,124 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import { useRouter } from "vue-router";
 
-const linksList = [
+const menuList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    icon: "dashboard",
+    label: "Dashboard",
+    separator: true,
+    link: "/dashboard",
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    icon: "create",
+    label: "Create Inventory",
+    separator: false,
+    link: "/createinventory",
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    icon: "inventory",
+    label: "Inventory",
+    separator: false,
+    link: "inventory",
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    icon: "book",
+    label: "Subscriptions",
+    separator: true,
+    link: "/logout",
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    icon: "settings",
+    label: "Settings",
+    separator: false,
+    link: "/settings",
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
+    icon: "feedback",
+    label: "Send Feedback",
+    separator: false,
+    link: "/feedback",
   },
   {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
+    icon: "help",
+    iconColor: "primary",
+    label: "Help",
+    separator: false,
+    link: "/help",
+  },
+];
 
-export default defineComponent({
-  name: 'MainLayout',
-
-  components: {
-    EssentialLink
-  },
-
-  setup () {
-    const leftDrawerOpen = ref(false)
-
+export default {
+  data() {
     return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-})
+      drawer: false,
+      menuList,
+      active: true,
+      router: useRouter(),
+    };
+  },
+  methods: {
+    logout() {
+      this.$store.commit("auth/logout", null);
+      localStorage.clear();
+      this.router.push({ path: "/" });
+    },
+  },
+};
 </script>
+<style lang="scss">
+.active {
+  background-color: #a1a9c1 !important;
+  border-right: 5px solid #102051;
+}
+.toolbar {
+  background-color: white;
+  color: #142863;
+  padding: 0.7rem;
+  @media (max-width: 1061px) {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+}
+.space {
+  @media (max-width: 1061px) {
+    display: none;
+  }
+}
+.ourpass {
+  @media (max-width: 1061px) {
+    display: none;
+  }
+}
+.search-input {
+  border-radius: 5px;
+  @media (max-width: 1061px) {
+    display: none;
+  }
+}
+.actions {
+  @media (max-width: 1061px) {
+    display: none;
+  }
+}
+.inventory {
+  @media (max-width: 1061px) {
+    align-items: center;
+  }
+}
+.body {
+  background-color: #f2f2f2;
+}
+.drawer {
+  background-color: #fff !important;
+}
+.circle {
+  border-end-end-radius: 2px solid red;
+  position: absolute;
+  top: -0.1rem;
+  left: 13rem;
+  z-index: 10;
+}
+</style>
